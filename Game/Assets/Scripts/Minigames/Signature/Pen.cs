@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Pen : MonoBehaviour
 {
+    [Header("Pen Positioning")] 
+    [SerializeField] private float penPositionSpeed;
+    [SerializeField] private float penStartPosY;
+    [SerializeField] private float penDesiredPosY;
+    
     [SerializeField] private Transform penTip;
     [SerializeField] private int penSize = 5;
 
@@ -24,6 +29,9 @@ public class Pen : MonoBehaviour
 
     private void Start()
     {
+        // Setup Pen Start
+        penStartPosY = transform.position.y;
+        
         // Get the renderer of the pen.
         _renderer = penTip.GetComponent<Renderer>();
         _colors = Enumerable.Repeat(_renderer.material.color, penSize*penSize).ToArray();
@@ -32,13 +40,38 @@ public class Pen : MonoBehaviour
 
     private void Update()
     {
+        // Update mouse positioning
+        PositionPenXZ();
+        PositionPenY();
+        
+        // Draw
         Draw();
     }
 
+    private void PositionPenXZ()
+    {
+        // Convert mouse pos to world pos
+        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
+        Vector3 mousePosWorldPoint = Camera.main.ScreenToWorldPoint(mousePos);
+
+        transform.position = new Vector3(mousePosWorldPoint.x, transform.position.y, mousePosWorldPoint.y);
+    }
+    private void PositionPenY()
+    {
+        if (Input.GetMouseButton(0))
+            transform.position = Vector3.Lerp(transform.position,
+                new Vector3(transform.position.x, penDesiredPosY, transform.position.z),
+                penPositionSpeed * Time.deltaTime);
+        else
+            transform.position = Vector3.Lerp(transform.position,
+                new Vector3(transform.position.x, penStartPosY, transform.position.z),
+                penPositionSpeed * Time.deltaTime);
+    }
+    
     private void Draw()
     {
         // Raycast to the pen.
-        if (Physics.Raycast(penTip.position, transform.up, out _touch, _tipHeight))
+        if (Physics.Raycast(penTip.position, -transform.up, out _touch, _tipHeight))
         {
             // If it is a drawable.
             if(_touch.transform.CompareTag("Drawable") && paper == null)
@@ -65,10 +98,10 @@ public class Pen : MonoBehaviour
                 for (float f = 0.01f; f < 1.00f; f+=0.03f)
                 {
                     // Filling gaps
-                    var _lerpX = (int)Mathf.Lerp(_lastTouchPos.x, x, f);
-                    var _lerpY = (int)Mathf.Lerp(_lastTouchPos.y, y, f);
+                    var lerpX = (int)Mathf.Lerp(_lastTouchPos.x, x, f);
+                    var lerpY = (int)Mathf.Lerp(_lastTouchPos.y, y, f);
                     
-                    paper.paperTexture.SetPixels(_lerpX, _lerpY, penSize, penSize, _colors);
+                    paper.paperTexture.SetPixels(lerpX, lerpY, penSize, penSize, _colors);
                 }
                 
                 // Apply changes to the new texture.
