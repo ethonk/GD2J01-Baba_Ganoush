@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers.EventManagement;
+using TMPro;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -20,16 +22,37 @@ public class InteractionManager : MonoBehaviour
     [Header("Interact UI")] 
     [SerializeField] private GameObject interactionUI;
 
+    [Header("Event Manager")] 
+    private EventManagement _eventManagement;
+
     private Transform _player;
     public bool currentlyInteracting = false;
-
-    // Start is called before the first frame update
+    
     private void Start()
     {
-        _player = GameObject.Find("Player").transform;   // find the player.
+        // Setup Event Manager
+        _eventManagement = GameObject.Find("EVENT_MANAGER").GetComponent<EventManagement>();
+        
+        // Setup the player
+        _player = GameObject.Find("Player").transform;
+
+        // Set up what the text says.
+        var text = interactionUI.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        switch (interactionType)
+        {
+            case InteractionTypes.Dialogue:
+                text.text = "Speak to ";
+                break;
+            case InteractionTypes.Pickup:
+                text.text = "Pick up ";
+                break;
+            case InteractionTypes.Special:
+                text.text = "Power surrounds ";
+                break;
+        }
+        text.text += entityName;
     }
     
-    // Update is called once per frame
     private void Update()
     {
         // Configure Interaction UI visibility.
@@ -44,7 +67,7 @@ public class InteractionManager : MonoBehaviour
             switch (interactionType)
             {
                 case InteractionTypes.Dialogue:
-                    print("start dialogue");
+                    DoDialogue();
                     break;
             }
             
@@ -60,26 +83,26 @@ public class InteractionManager : MonoBehaviour
     
     bool IsWithinDistance()
     {
-        if (Vector3.Distance(_player.position, transform.position) <= interactionRange)
-            return true;
-        return false;
+        return Vector3.Distance(_player.position, transform.position) <= interactionRange;
     }
     
     void SetInteractionUI()
     {
-        if (IsInteractable())
-            interactionUI.SetActive(true);
-        else
-            interactionUI.SetActive(false);
+        interactionUI.SetActive(IsInteractable());
     }
 
     void RotateUIToPlayer()
     {
-        var LookDirection = _player.position - interactionUI.transform.position;
-        LookDirection.x *= -1;
-        LookDirection.y = 0;
-        LookDirection.z *= -1;
+        var lookDirection = _player.position - interactionUI.transform.position;
+        lookDirection.x *= -1;
+        lookDirection.y = 0;
+        lookDirection.z *= -1;
 
-        interactionUI.transform.rotation = Quaternion.LookRotation(LookDirection);
+        interactionUI.transform.rotation = Quaternion.LookRotation(lookDirection);
+    }
+
+    void DoDialogue()
+    {
+        _eventManagement.SetDialogueSentences(GetComponent<DialogueScript>().dialogueSentences);
     }
 }
