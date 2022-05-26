@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers.EventManagement;
 using UnityEngine;
 using TMPro;
 
@@ -18,13 +19,6 @@ public class DialogueController : MonoBehaviour
 
     public int talkIndex;
 
-    private void Start()
-    {
-        dialogueNameComponent.text = dialogueName;
-        dialogueTextComponent.text = string.Empty;
-        StartDialogue();
-    }
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -36,15 +30,21 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    void StartDialogue()
+    public void StartDialogue()
     {
-        talkIndex = 0;                      // set index to '0' to indicate start of conversation.
+        EnableDialogueController(true);
+        
+        // Set dialogue to null by default
+        dialogueNameComponent.text = dialogueName;
+        dialogueTextComponent.text = string.Empty;
+        
+        talkIndex = 0;                          // set index to '0' to indicate start of conversation.
         StartCoroutine(TypeSentence());   // start typing the line.
     }
 
     void ExitDialogue()
     {
-        gameObject.SetActive(false);
+        EnableDialogueController(false);
     }
 
     IEnumerator TypeSentence()
@@ -68,6 +68,14 @@ public class DialogueController : MonoBehaviour
         else
         {
             ExitDialogue();
+        }
+    }
+
+    void EnableDialogueController(bool enable)
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(enable);
         }
     }
 }

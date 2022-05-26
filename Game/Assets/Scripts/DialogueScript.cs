@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class DialogueScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("What does the NPC say?")]
+    public string[] dialogueSentences;
+    
+    
 }
