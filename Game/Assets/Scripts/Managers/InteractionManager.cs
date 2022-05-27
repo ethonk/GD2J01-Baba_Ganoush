@@ -103,6 +103,8 @@ public class InteractionManager : MonoBehaviour
 
     void DoDialogue()
     {
-        _eventManagement.SetDialogueSentences(GetComponent<DialogueScript>().dialogueSentences);
+        DialogueScript entityDialogueHandler = GetComponent<DialogueScript>();
+        _eventManagement.SetDialogueSentences(entityDialogueHandler.dialogueName,
+            entityDialogueHandler.dialogueSentences);
     }
 }
