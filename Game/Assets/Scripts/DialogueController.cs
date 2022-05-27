@@ -30,11 +30,16 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    public void StartDialogue()
+    public void StartDialogue(string givenName, string[] givenSentences)
     {
+        // Enable the dialogue controller.
         EnableDialogueController(true);
         
-        // Set dialogue to null by default
+        // Set the text of the dialogue.
+        dialogueName = givenName;
+        dialogueSentences = givenSentences;
+        
+        // Set dialogue components to null.
         dialogueNameComponent.text = dialogueName;
         dialogueTextComponent.text = string.Empty;
         
