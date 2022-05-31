@@ -25,6 +25,9 @@ namespace Managers.EventManagement
         public class DialogueStartEvent : UnityEvent<string, string[]>{}
         public DialogueStartEvent onStartDialogue;
         
+        public class CoinAddEvent : UnityEvent{}
+        public CoinAddEvent onCoinAdd;
+        
         public void SetDialogueSentences(string dialogueName, string[] dialogueSentences)
         {
             // Invoke the dialogue manager.
