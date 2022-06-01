@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Managers.EventManagement;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class PissedMooJuice : MonoBehaviour
 {
+    public enum BossMode {Normal, Boss};
+    [Header("What type of Moo Juice Enemy is it?")]
+    [SerializeField] private BossMode moojuiceMode;
+    
     [Header("Objects")] 
     [SerializeField] private List<GameObject> projectiles;  // milk carton  (vision impairment)
                                                             // milk mug     (mobility impairment)
@@ -17,23 +24,41 @@ public class PissedMooJuice : MonoBehaviour
 
     private void Start()
     {
+        // Define the player.
         _player = GameObject.Find("Player");
-        
+
+        // Start blasting.
         StartCoroutine(Throw());
     }
 
     private IEnumerator Throw()
     {
-        // Spawn consecutively.
-        StartCoroutine(SpawnProjectile());
+        yield return new WaitForSeconds(5.0f);
         
+        // Play text
+        string _name = "Moo Juice";
+        string[] _text = {"Hey! Don't ignore me!"};
+        GameObject.Find("EVENT_MANAGER").GetComponent<EventManagement>()
+            .SetDialogueSentences(_name, _text);
+        
+        // Spawn based on mode
+        switch (moojuiceMode)
+        {
+            case BossMode.Normal:
+                StartCoroutine(SpawnProjectileNormal());
+                break;
+            case BossMode.Boss:
+                StartCoroutine(SpawnProjectileBoss());
+                break;
+        }
+
         // Go on cooldown.
         yield return new WaitForSeconds(cdProjectile);
         // Do throw again.
         StartCoroutine(Throw());
     }
 
-    private IEnumerator SpawnProjectile()
+    private IEnumerator SpawnProjectileNormal()
     {
         for (int i = 0; i < countProjectile; i++)
         {
@@ -48,6 +73,36 @@ public class PissedMooJuice : MonoBehaviour
             // Start the projectile.
             projectileObj.transform.position = transform.position;
             projectileObj.StartProjectile(spdProjectile, lifetimeProjectile, _player.transform.position);
+        }
+    }
+
+    private IEnumerator SpawnProjectileBoss()
+    {
+        // Create a list of moojuice projectiles
+        List<MooJuiceProjectile> mooJuiceProjectiles = new List<MooJuiceProjectile>();
+        
+        // Start initial spawn
+        for (int i = 0; i < countProjectile - 1; i++)
+        {
+            // Do delay
+            yield return new WaitForSeconds(0.5f);
+        
+            // Select a random projectile.
+            int projectileIndex = Random.Range(0, projectiles.Count);
+            // Define the projectile and add them to the list.
+            MooJuiceProjectile _projectile = Instantiate(projectiles[projectileIndex]).GetComponent<MooJuiceProjectile>();
+            _projectile.transform.position = transform.position + new Vector3(0, 3.0f + (2.0f * i), 0);
+            mooJuiceProjectiles.Add(_projectile);
+        }
+
+        yield return new WaitForSeconds(2.0f);
+        // Start all projectiles
+        for (int i = 0; i < mooJuiceProjectiles.Count; i++)
+        {
+            // Get desired position
+            Vector3 desiredPosition = _player.transform.position + new Vector3(0, 2.0f * i, 0);
+            // Launch projectile
+            mooJuiceProjectiles[i].StartProjectile(spdProjectile, lifetimeProjectile, desiredPosition);
         }
     }
 }
