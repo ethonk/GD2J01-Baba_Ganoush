@@ -16,6 +16,8 @@ public class MooJuiceProjectile : MonoBehaviour
     [Header("Projectile Type")]
     [SerializeField] private ProjectileTypes projectileType;
 
+    [Header("Particles")]
+    [SerializeField] private GameObject particleEffect;
     private void Update()
     {
         if (exists)
@@ -38,7 +40,14 @@ public class MooJuiceProjectile : MonoBehaviour
         yield return new WaitForSeconds(projectileLifetime);
         Destroy(gameObject);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider col)
     {
+        if (col.transform.CompareTag("Player"))
+        {
+            var newParticle = Instantiate(particleEffect);
+            newParticle.transform.SetParent(null);
+            newParticle.transform.position = transform.position;
+            Destroy(gameObject);
+        }
     }
 }
