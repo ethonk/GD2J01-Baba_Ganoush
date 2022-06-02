@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BWEnterTrigger : MonoBehaviour
 {
-    //Reference of BWTriggerManager script
-    public BWTriggerManager MovedObjScript;
+    //Reference of BWMoveManager script
+    public BWMoveManager MovedObj;
+
+    //Boolean to check if player is in area of trigger
+    public bool check = false;
 
     [Header("InteractedObj")]
-    [SerializeField] private GameObject[] MovedObject;
+    [SerializeField] private GameObject MovedObject;
 
 
     // Update is called once per frame
@@ -16,12 +19,10 @@ public class BWEnterTrigger : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            //BWTriggerManager ObjMoveManager = GetComponent<BWTriggerManager>();
-            //ObjMoveManager.GetComponent<BWTriggerManager>().Trigger();
-
+            check = true;
 
             // Calling OnEnterTrigger from the TrigerManager script
-            MovedObjScript.ObjMoveScript();
+            //MovedObj.ObjMoveScript();
 
         }
 

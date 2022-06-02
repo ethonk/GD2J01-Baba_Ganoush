@@ -189,11 +189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2e88edf8b424c40b4135ee485cca21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnterTrigger: {fileID: 1603689665}
-  speed: 2
-  xAxis: 0
-  yAxis: 0
-  zAxis: 2
+  enterTrigger: {fileID: 1603689665}
+  m_speed: 1
+  xAxis: 2
+  yAxis: 0.73
+  zAxis: 1
 --- !u!65 &539928779
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539928777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.57, y: 2.57, z: -9.46}
+  m_LocalPosition: {x: 6.14, y: 1.94, z: -4.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -566,7 +566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320451384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -4.32}
+  m_LocalPosition: {x: -1.62, y: 2, z: -4.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1930595215}
@@ -847,7 +847,7 @@ GameObject:
   - component: {fileID: 1603689665}
   - component: {fileID: 1603689670}
   m_Layer: 0
-  m_Name: Button
+  m_Name: EnterZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -865,9 +865,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78717d8b7a434f046a63077d2c69b700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovedObjScript: {fileID: 539928778}
-  MovedObject:
-  - {fileID: 539928777}
+  MovedObj: {fileID: 539928778}
+  check: 0
+  MovedObject: {fileID: 539928777}
 --- !u!65 &1603689666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -938,7 +938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603689664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.56, y: 1.72, z: 2.724}
+  m_LocalPosition: {x: -4.12, y: 1.72, z: 2.724}
   m_LocalScale: {x: 4, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
