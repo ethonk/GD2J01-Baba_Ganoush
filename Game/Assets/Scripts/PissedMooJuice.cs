@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using Managers.EventManagement;
+using TMPro;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -19,16 +20,32 @@ public class PissedMooJuice : MonoBehaviour
     [SerializeField] private float cdProjectile;            // how long between each throw.
     [SerializeField] private float spdProjectile;           // how fast the projectile interpolates towards the target
     [SerializeField] private float lifetimeProjectile;      // how long does the projectile exist for?
-
+    
+    [Header("Range that the player has to be to interact with Moo Juice")]
+    public float range;
+    public bool inRange;
+    
     private GameObject _player;
 
     private void Start()
     {
         // Define the player.
         _player = GameObject.Find("Player");
+    }
 
-        // Start blasting.
-        StartCoroutine(Throw());
+    private void Update()
+    {
+        if (Vector3.Distance(_player.transform.position, transform.position) <= range && !inRange)
+        {
+            // Set in range
+            inRange = true;
+            // Start blasting.
+            StartCoroutine(Throw());
+        }
+        else if (Vector3.Distance(_player.transform.position, transform.position) >= range && inRange)
+        {
+            inRange = false;
+        }
     }
 
     private IEnumerator Throw()
