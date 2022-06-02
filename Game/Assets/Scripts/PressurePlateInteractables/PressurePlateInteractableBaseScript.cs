@@ -5,7 +5,7 @@ using UnityEngine;
 public class PressurePlateInteractableBaseScript : MonoBehaviour
 {
     [HideInInspector] public float timer = 0.0f;
-    public float maxTime = 10.0f;
+    public float moveTime = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
