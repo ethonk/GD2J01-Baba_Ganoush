@@ -91,8 +91,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5749130999402925784}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -113,3 +113,4 @@ MonoBehaviour:
   projectileTarget: {x: 0, y: 0, z: 0}
   exists: 0
   projectileType: 1
+  particleEffect: {fileID: 5859193109831284731, guid: 94f94bfde18b7a746b2a29090a638c63, type: 3}

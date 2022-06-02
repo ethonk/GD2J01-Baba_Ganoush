@@ -155,12 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7d1e903c224cc4b9bb3832243ea53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moojuiceMode: 1
+  moojuiceMode: 0
   projectiles:
   - {fileID: 6187378064512795954, guid: 92d7157e7ab41a745991cdfde36decd9, type: 3}
   - {fileID: 5749130999402925784, guid: 53010e0c5366f6c4c8413519489ce20a, type: 3}
   countProjectile: 10
-  cdProjectile: 5
+  cdProjectile: 2
   spdProjectile: 5
   lifetimeProjectile: 3
 --- !u!136 &20684988
