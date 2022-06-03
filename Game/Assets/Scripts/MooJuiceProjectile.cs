@@ -18,14 +18,22 @@ public class MooJuiceProjectile : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField] private GameObject particleEffect;
+
+    private Vector3 normalizedDirection;
+    
     private void Update()
     {
         if (exists)
-            transform.position = Vector3.Lerp(transform.position, projectileTarget, (projectileSpeed * Time.deltaTime));
+            transform.position = transform.position + normalizedDirection * (projectileSpeed * Time.deltaTime);
+        //transform.position = Vector3.Lerp(transform.position, projectileTarget, (projectileSpeed * Time.deltaTime));
     }
 
     public void StartProjectile(float speed, float lifetime, Vector3 target)
     {
+        // Normalized direction
+        normalizedDirection = (target - transform.position).normalized;
+        
+        // Projectile Attributes
         projectileSpeed = speed;
         projectileLifetime = lifetime;
         projectileTarget = target;

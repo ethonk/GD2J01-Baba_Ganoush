@@ -20,6 +20,13 @@ public class PissedMooJuice : MonoBehaviour
     [SerializeField] private float cdProjectile;            // how long between each throw.
     [SerializeField] private float spdProjectile;           // how fast the projectile interpolates towards the target
     [SerializeField] private float lifetimeProjectile;      // how long does the projectile exist for?
+
+    [Header("Settings - Normal Exclusive")]
+    [SerializeField] private float singleSpawnDelay;        // Fire delay.
+    
+    [Header("Settings - Boss Exclusive")] 
+    [SerializeField] private float multiSpawnDelay;         // Wait how long between each projectile generation.
+    [SerializeField] private float multiSpawnFireDelay;     // After projectile generation, how long before launching?
     
     [Header("Range that the player has to be to interact with Moo Juice")]
     public float range;
@@ -31,27 +38,12 @@ public class PissedMooJuice : MonoBehaviour
     {
         // Define the player.
         _player = GameObject.Find("Player");
-    }
-
-    private void Update()
-    {
-        if (Vector3.Distance(_player.transform.position, transform.position) <= range && !inRange)
-        {
-            // Set in range
-            inRange = true;
-            // Start blasting.
-            StartCoroutine(Throw());
-        }
-        else if (Vector3.Distance(_player.transform.position, transform.position) >= range && inRange)
-        {
-            inRange = false;
-        }
+        // Start blasting.
+        StartCoroutine(Throw());
     }
 
     private IEnumerator Throw()
     {
-        yield return new WaitForSeconds(5.0f);
-        
         // Play text
         string _name = "Moo Juice";
         string[] _text = {"Hey! Don't ignore me!"};
@@ -80,7 +72,7 @@ public class PissedMooJuice : MonoBehaviour
         for (int i = 0; i < countProjectile; i++)
         {
             // Do delay
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(singleSpawnDelay);
         
             // Select a random projectile.
             int projectileIndex = Random.Range(0, projectiles.Count);
@@ -99,25 +91,29 @@ public class PissedMooJuice : MonoBehaviour
         List<MooJuiceProjectile> mooJuiceProjectiles = new List<MooJuiceProjectile>();
         
         // Start initial spawn
-        for (int i = 0; i < countProjectile - 1; i++)
+        for (int i = 0; i < countProjectile; i++)
         {
             // Do delay
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(multiSpawnDelay);
         
-            // Select a random projectile.
+            // Select a random projectile type.
             int projectileIndex = Random.Range(0, projectiles.Count);
-            // Define the projectile and add them to the list.
+            
+            // Define & Instantiate the projectile.
             MooJuiceProjectile _projectile = Instantiate(projectiles[projectileIndex]).GetComponent<MooJuiceProjectile>();
             _projectile.transform.position = transform.position + new Vector3(0, 3.0f + (2.0f * i), 0);
+            // Add projectile to the list.
             mooJuiceProjectiles.Add(_projectile);
         }
-
-        yield return new WaitForSeconds(2.0f);
+        
+        // Wait before releasing all.
+        yield return new WaitForSeconds(multiSpawnFireDelay);
+        
         // Start all projectiles
         for (int i = 0; i < mooJuiceProjectiles.Count; i++)
         {
             // Get desired position
-            Vector3 desiredPosition = _player.transform.position + new Vector3(0, 2.0f * i, 0);
+            Vector3 desiredPosition = _player.transform.position + new Vector3(0, (2.0f * i) - ((int)mooJuiceProjectiles.Count * 1.0f), 0);
             // Launch projectile
             mooJuiceProjectiles[i].StartProjectile(spdProjectile, lifetimeProjectile, desiredPosition);
         }
