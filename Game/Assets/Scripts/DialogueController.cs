@@ -33,7 +33,8 @@ public class DialogueController : MonoBehaviour
     public void StartDialogue(string givenName, string[] givenSentences)
     {
         // Enable the dialogue controller.
-        EnableDialogueController(true);
+        ExitDialogue();                     // first exit: to ensure dialogue does not overwrite existing
+        EnableDialogueController(true);     // second enter: start dialogue.
         
         // Set the text of the dialogue.
         dialogueName = givenName;
@@ -50,6 +51,7 @@ public class DialogueController : MonoBehaviour
     void ExitDialogue()
     {
         EnableDialogueController(false);
+        StopAllCoroutines();
     }
 
     IEnumerator TypeSentence()
