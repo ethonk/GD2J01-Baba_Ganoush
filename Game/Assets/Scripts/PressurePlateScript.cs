@@ -8,6 +8,8 @@ public class PressurePlateScript : MonoBehaviour
     int direction = -1;
     int onPlateCount = 0;
     public List<PressurePlateInteractableBaseScript> interactables;
+    public float startDelay;
+    public float endDelay;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,16 +19,24 @@ public class PressurePlateScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        foreach(PressurePlateInteractableBaseScript interactable in interactables)
+        timer = Mathf.Max(timer - Time.deltaTime, 0.0f);
+        if (timer <= 0.0f)
         {
-            interactable.timer += Time.deltaTime * direction;
+            foreach (PressurePlateInteractableBaseScript interactable in interactables)
+            {
+                interactable.timer += Time.deltaTime * direction;
+            }
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        onPlateCount += 1;
+        if (onPlateCount == 0)
+        {
+            timer = startDelay;
+        }
+            onPlateCount += 1;
         direction = 1;
     }
 
@@ -36,6 +46,7 @@ public class PressurePlateScript : MonoBehaviour
         if(onPlateCount == 0)
         {
             direction = -1;
+            timer = endDelay;
         }
     }
 
