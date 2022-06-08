@@ -7,6 +7,7 @@ public class GrabScript : MonoBehaviour
     bool canGrab = true;
     GameObject grabObject = null;
     public float throwForce = 100.0f;
+    public float throwHeight = 100.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,7 @@ public class GrabScript : MonoBehaviour
             Physics.IgnoreCollision(this.transform.parent.GetComponent<Collider>(), grabObject.GetComponent<Collider>(), false);
             grabObject.GetComponent<Rigidbody>().isKinematic = false;
             canGrab = true;
-            grabObject.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * throwForce);
+            grabObject.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * throwForce + this.transform.up*throwHeight);
         }
     }
 
