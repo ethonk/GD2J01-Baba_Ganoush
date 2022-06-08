@@ -118,4 +118,11 @@ public class PissedMooJuice : MonoBehaviour
             mooJuiceProjectiles[i].StartProjectile(spdProjectile, lifetimeProjectile, desiredPosition);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        // Yellow Wireframe Sphere - shows coverage of moo juice.
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, range);
+    }
 }
