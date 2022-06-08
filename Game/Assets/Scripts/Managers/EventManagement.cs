@@ -27,7 +27,6 @@ namespace Managers.EventManagement
         [System.Serializable]
         public class DialogueStartEvent : UnityEvent<string, string[]> {}
         public DialogueStartEvent onStartDialogue;
-
         public void SetDialogueSentences(string dialogueName, string[] dialogueSentences)
         {
             // Invoke the dialogue manager.
@@ -45,12 +44,11 @@ namespace Managers.EventManagement
         }
         
         [System.Serializable]
-        public class SoundPlayEvent : UnityEvent<AudioClip> {}
-        public SoundPlayEvent onSoundPlay;
-        public void PlaySound()
+        public class DialogueFinishedEvent : UnityEvent{}
+        public DialogueFinishedEvent onDialogueFinish;
+        public void FinishedDialogue()
         {
-            AudioClip clip = null;
-            onSoundPlay.Invoke(clip);
+            if (onDialogueFinish != null) onDialogueFinish.Invoke();
         }
     }
 }

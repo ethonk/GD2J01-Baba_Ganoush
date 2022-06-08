@@ -25,7 +25,6 @@ public class MooJuiceProjectile : MonoBehaviour
     {
         if (exists)
             transform.position = transform.position + normalizedDirection * (projectileSpeed * Time.deltaTime);
-        //transform.position = Vector3.Lerp(transform.position, projectileTarget, (projectileSpeed * Time.deltaTime));
     }
 
     public void StartProjectile(float speed, float lifetime, Vector3 target)

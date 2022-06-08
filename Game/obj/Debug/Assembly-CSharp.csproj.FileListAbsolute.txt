@@ -307,3 +307,16 @@ C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\obj\Debug\Assembly-CSh
 C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\obj\Debug\Assembly-CSharp.dll
 C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\obj\Debug\Assembly-CSharp.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.ShaderGraph.Editor.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.RenderPipelines.Universal.Shaders.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.RenderPipelines.Universal.Editor.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.RenderPipelines.Universal.Runtime.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.RenderPipeline.Universal.ShaderLibrary.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.Mathematics.Editor.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.Searcher.Editor.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.RenderPipelines.Core.Runtime.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.RenderPipelines.Core.ShaderLibrary.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.RenderPipelines.Core.Editor.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.Mathematics.pdb
+C:\Users\ethonk\Documents\GitHub\GD2J01-Baba_Ganoush\Game\Temp\Bin\Debug\Unity.ShaderGraph.Utilities.pdb

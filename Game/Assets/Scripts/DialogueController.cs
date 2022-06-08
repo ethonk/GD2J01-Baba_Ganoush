@@ -18,6 +18,14 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private string[] dialogueSentences;
 
     public int talkIndex;
+    
+    // event manager
+    private EventManagement _eventManagement;
+
+    private void Start()
+    {
+        _eventManagement = GameObject.Find("EVENT_MANAGER").GetComponent<EventManagement>();
+    }
 
     private void Update()
     {
@@ -48,8 +56,9 @@ public class DialogueController : MonoBehaviour
         StartCoroutine(TypeSentence());   // start typing the line.
     }
 
-    void ExitDialogue()
+    private void ExitDialogue()
     {
+        // stop the dialogue controller.
         EnableDialogueController(false);
         StopAllCoroutines();
     }
@@ -75,6 +84,9 @@ public class DialogueController : MonoBehaviour
         else
         {
             ExitDialogue();
+            
+            // tell the event manager that cutscene is finished.
+            _eventManagement.FinishedDialogue();
         }
     }
 
