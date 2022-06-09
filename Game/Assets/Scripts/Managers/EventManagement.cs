@@ -48,7 +48,13 @@ namespace Managers.EventManagement
         public DialogueFinishedEvent onDialogueFinish;
         public void FinishedDialogue()
         {
-            if (onDialogueFinish != null) onDialogueFinish.Invoke();
+            // before invoking, check if there are any null listeners (removed)
+            for (int i = 0; i < onDialogueFinish.GetPersistentEventCount(); i++)
+                if (onDialogueFinish.GetPersistentTarget(i) != null)
+                    break;
+            
+            // if none, invoke.
+            onDialogueFinish.Invoke();
         }
     }
 }
