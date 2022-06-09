@@ -2030,18 +2030,34 @@ MonoBehaviour:
   - Moojuice
   - Cookie Crumble
   - Moojuice
+  - 
   Dialogues:
   - Dialogues:
-    - What happened to you cookie? You were always a great friend to me.
-    - Remember those days where we always perused the candy kingdom carefree?
-    - Those were GREAT TIMES cookie! Why did you have to ruin it?
+    - You will never be a real Mexican. You have no childhood memories growing up
+      in Mexico, no competent spanish language skills, no genuine cultural knowledge.
+    - You are a brown American man twisted by self-hatred and delusions of ethnic
+      grandeur into a crude mockery of nature's natural perfection.
+    - All the validation you get is two-faced and half-hearted. Behind your back
+      Mexicans mock you. Your Abuelita is disgusted and ashamed of you, your "amigos"
+      laugh at your incomprehensible """spanish""" behind closed doors.
   - Dialogues:
-    - Clearly there's only one solution...
-    - You will have to suffer the wrath of gru and his 14,000 minions.
+    - Mexicans are utterly repulsed by you. Thousands of years of evolution have
+      allowed Mexicans to sniff out frauds with incredible efficiency.
+    - "Even Chicanos who \u201Cpass\u201D look uncanny and unnatural to a mexican.
+      Your accent and tourist like behavior is a dead giveaway. And even if you manage
+      to get a drunk Mexicana home with you, she\u2019ll turn tail and bolt the second
+      she gets a whiff of your hard shell tacos and \"tex-mex\" food."
   - Dialogues:
-    - hehe. poggie woggies.
+    - but i am mexican :(
   - Dialogues:
-    - YOU ARE DEAD
+    - You will never be happy. You wrench out a fake smile every single morning,
+      say "buenos dias" to the mirror and spend 10 minutes with duolingo, but deep
+      inside you feel the depression creeping up like a weed, ready to crush you
+      under the unbearable weight.
+    - This is your fate. This is what your parents choose when they jumped the border.
+      There's no turning back.
+  - Dialogues:
+    - '[cries in chimichanga]'
   Cameras:
   - {fileID: 167659257}
   - {fileID: 230815192}
@@ -2049,8 +2065,9 @@ MonoBehaviour:
   - {fileID: 167659257}
   - {fileID: 1901723235}
   Notes2: 'IMPORTANT: UseDialogue and UseCamera must have the same number of elements.'
-  UseDialogue: 0101010100
+  UseDialogue: 0101010101
   UseCamera: 0101010101
+  cutsceneIndex: 0
 --- !u!4 &728516910
 Transform:
   m_ObjectHideFlags: 0
@@ -3279,7 +3296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126221638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.61605, y: -5.30444, z: -7.8268986}
+  m_LocalPosition: {x: 16.61605, y: -5.30444, z: -7.83}
   m_LocalScale: {x: 0.29404, y: 0.29404, z: 0.29404}
   m_Children: []
   m_Father: {fileID: 2051917811}
@@ -3412,6 +3429,7 @@ MonoBehaviour:
   interactionType: 0
   interactionRange: 5
   interactionUI: {fileID: 183852987}
+  _cutscene: {fileID: 0}
   currentlyInteracting: 0
 --- !u!136 &1164448196
 CapsuleCollider:
@@ -4260,7 +4278,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 480, y: 120}
+  m_SizeDelta: {x: 900, y: 120}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1469455494
 MonoBehaviour:
@@ -6975,19 +6993,7 @@ MonoBehaviour:
         m_CallState: 2
   onDialogueFinish:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 728516909}
-        m_TargetAssemblyTypeName: CutsceneCreator, Assembly-CSharp
-        m_MethodName: DoCutscene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2071201416
 GameObject:
   m_ObjectHideFlags: 0
@@ -7340,6 +7346,14 @@ PrefabInstance:
     - target: {fileID: 296245762694379196, guid: 94a5c58e59ac774458eaf53b43d202ef, type: 3}
       propertyPath: m_Name
       value: MooJuice_NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 296245762694379199, guid: 94a5c58e59ac774458eaf53b43d202ef, type: 3}
+      propertyPath: _cutscene
+      value: 
+      objectReference: {fileID: 728516909}
+    - target: {fileID: 296245762694379199, guid: 94a5c58e59ac774458eaf53b43d202ef, type: 3}
+      propertyPath: interactionType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 296245762694379203, guid: 94a5c58e59ac774458eaf53b43d202ef, type: 3}
       propertyPath: m_RootOrder

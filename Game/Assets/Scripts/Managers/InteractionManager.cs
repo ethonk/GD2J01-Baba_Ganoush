@@ -12,7 +12,7 @@ public class InteractionManager : MonoBehaviour
     [Header("General")] 
     [SerializeField] private string entityName;
     
-    private enum InteractionTypes { Dialogue, Special, Pickup };
+    private enum InteractionTypes { Dialogue, Special, Pickup, Cutscene };
     [Header("Interaction Type")]
     [SerializeField] private InteractionTypes interactionType;
     
@@ -24,6 +24,9 @@ public class InteractionManager : MonoBehaviour
 
     [Header("Event Manager")] 
     private EventManagement _eventManagement;
+
+    [Header("Cutscenes")] 
+    [SerializeField] private CutsceneCreator _cutscene;
 
     private Transform _player;
     public bool currentlyInteracting = false;
@@ -49,6 +52,9 @@ public class InteractionManager : MonoBehaviour
             case InteractionTypes.Special:
                 text.text = "Power surrounds ";
                 break;
+            case InteractionTypes.Cutscene:
+                text.text = "Have a one-to-one with ";
+                break;
         }
         text.text += entityName;
     }
@@ -68,6 +74,9 @@ public class InteractionManager : MonoBehaviour
             {
                 case InteractionTypes.Dialogue:
                     DoDialogue();
+                    break;
+                case InteractionTypes.Cutscene:
+                    _cutscene.StartCutscene();
                     break;
             }
             

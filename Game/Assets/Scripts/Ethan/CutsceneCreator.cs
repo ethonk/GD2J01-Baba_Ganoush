@@ -31,39 +31,59 @@ public class CutsceneCreator : MonoBehaviour
     private Camera mainCamera;
     private Camera currentCamera;
 
-    private int index = 0;
+    public int cutsceneIndex = 0;
+    
     private void Start()
     {
         // Define core.
         _eventManagement = GameObject.Find("EVENT_MANAGER").GetComponent<EventManagement>();
         mainCamera = Camera.main;
-        
-        DoCutscene();
     }
 
+    public void StartCutscene()
+    {
+        // When starting cutscene, add as listener.
+        _eventManagement.onDialogueFinish.AddListener(DoCutscene);
+        DoCutscene();
+    }
+    
     public void DoCutscene()
     {
         // == START ==
         if (mainCamera != null) mainCamera.enabled = false; // disable the main camera
 
-        if (UseDialogue[index]) 
-            _eventManagement.SetDialogueSentences(DialogueNames[index], Dialogues[index].Dialogues);
-
-        if (UseCamera[index])
+        if (cutsceneIndex < UseDialogue.Count)
         {
-            if (currentCamera != null) currentCamera.enabled = false;
-            currentCamera = Cameras[index];
-            currentCamera.enabled = true;
+            if (UseDialogue[cutsceneIndex]) 
+                _eventManagement.SetDialogueSentences(DialogueNames[cutsceneIndex], Dialogues[cutsceneIndex].Dialogues);
+
+            if (UseCamera[cutsceneIndex])
+            {
+                if (currentCamera != null) currentCamera.enabled = false;
+                currentCamera = Cameras[cutsceneIndex];
+                currentCamera.enabled = true;
+            }
         }
 
-        index++; // increase the index.
-        if (index > UseDialogue.Count - 1)
+        // End the cutscene if this is the last sequence.
+        if (cutsceneIndex >= UseDialogue.Count)
             EndCutscene();
+        else
+            cutsceneIndex++; // increase the index.
     }
     
     private void EndCutscene()
     {
+        print("ending dialogue!");
+        
+        // When ending cutscene, remove listener.
+        _eventManagement.onDialogueFinish.RemoveListener(DoCutscene);
+        
+        // Re-enable main camera.
+        currentCamera.enabled = false;
         mainCamera.enabled = true;
-        index = 0;
+        
+        // Reset index.
+        cutsceneIndex = 0;
     }
 }
