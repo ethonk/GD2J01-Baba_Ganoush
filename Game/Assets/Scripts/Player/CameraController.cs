@@ -1,39 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float RotationSpeed = 1.0f;
-
+    [SerializeField] private float rotationSpeed = 1.0f;
+    [SerializeField] private float xMaxLook;
+    [SerializeField] private float yMaxLook;
+    [SerializeField] private float distance = 10.0f;
+    [SerializeField] private float xCurrent, yCurrent;
+    [SerializeField] private float sensitivity;
+    
     [Header("Player References")]
-    [SerializeField] private Transform Target, Player;
-    private float MouseX, MouseY;
+    [SerializeField] private Transform player, targetLookAt;
 
-    private void Start()
+    private void LateUpdate()
     {
-        // Hide cursor visibility.
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+        xCurrent += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        yCurrent += Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        yCurrent = Mathf.Clamp(yCurrent, -yMaxLook, yMaxLook);
 
-    private void LateUpdate() 
-    {
-        CameraControl();
-    }
-
-    void CameraControl()
-    {
-        // Acquire input
-        MouseX += Input.GetAxis("Mouse X") * RotationSpeed;
-        MouseY -= Input.GetAxis("Mouse Y") * RotationSpeed;
-        // Clamp MouseY
-        MouseY = Mathf.Clamp(MouseY, -35.0f, 35.0f);
-
-        transform.LookAt(Target);
-
-        Target.rotation = Quaternion.Euler(MouseY, MouseX, 0);
-        Player.rotation = Quaternion.Euler(0, MouseX, 0);
+        Vector3 camDirection = new Vector3(0, 0, -distance);
+        Quaternion camRotation = Quaternion.Euler(yCurrent, xCurrent, 0);
+        transform.position = targetLookAt.position + camRotation * camDirection;
+        
+        transform.LookAt(targetLookAt.position);
+        
+        // rotate player with camera
     }
 }
