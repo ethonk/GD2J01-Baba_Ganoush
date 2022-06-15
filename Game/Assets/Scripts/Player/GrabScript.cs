@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GrabScript : MonoBehaviour
 {
+    // input
+    [SerializeField] private InputActionReference inputGrab;
+    [SerializeField] private InputActionReference inputDrop;
+    
     bool canGrab = true;
     GameObject grabObject = null;
     public float throwForce = 100.0f;
@@ -33,7 +36,7 @@ public class GrabScript : MonoBehaviour
             canGrab = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.F) && !canGrab)
+        if (Input.GetKeyDown(KeyCode.F) && !canGrab)
         {
             grabObject.transform.parent = null;
             Physics.IgnoreCollision(this.transform.parent.GetComponent<Collider>(), grabObject.GetComponent<Collider>(), false);

@@ -1,14 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Managers.EventManagement;
 using TMPro;
-using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractionManager : MonoBehaviour
 {
+    [Header("Core - Input")]
+    [SerializeField] private InputActionReference inputInteract;
+    
     [Header("General")] 
     [SerializeField] private string entityName;
     
@@ -65,9 +64,10 @@ public class InteractionManager : MonoBehaviour
         SetInteractionUI();
         // Rotate towards the player.
         RotateUIToPlayer();
-        
+
         if (Input.GetKeyDown(KeyCode.E) && IsInteractable())
         {
+            print("click!");
             currentlyInteracting = true;
 
             switch (interactionType)

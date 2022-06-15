@@ -12,9 +12,8 @@ public class MooJuiceProjectile : MonoBehaviour
     public Vector3 projectileTarget;    // where is the projectile going?
     public bool exists;                 // does the projectile exist?
     
-    private enum ProjectileTypes {Blind, Slow};
     [Header("Projectile Type")]
-    [SerializeField] private ProjectileTypes projectileType;
+    [SerializeField] private GlobalEnums.ProjectileTypes projectileType;
 
     [Header("Particles")]
     [SerializeField] private GameObject particleEffect;

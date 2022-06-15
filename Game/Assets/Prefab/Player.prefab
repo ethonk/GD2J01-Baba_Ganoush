@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 1667299564839462532}
   - component: {fileID: 1667299564839462585}
   - component: {fileID: 1667299564839462584}
+  - component: {fileID: 4931440417711681659}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1016,6 +1017,22 @@ MonoBehaviour:
   jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 4
+--- !u!114 &4931440417711681659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667299564839462586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2511ffc7656f67d4b8971beef1004657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputGrab: {fileID: -1243113602351568604, guid: 4c70f912eaa516b4f94a1b43ffc2947a, type: 3}
+  inputDrop: {fileID: -225971190676642504, guid: 4c70f912eaa516b4f94a1b43ffc2947a, type: 3}
+  throwForce: 100
+  throwHeight: 100
 --- !u!1 &1667299564939931203
 GameObject:
   m_ObjectHideFlags: 3
