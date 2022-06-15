@@ -187,10 +187,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1786afe459155974ba2f4800edb1ae95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputInteract: {fileID: -3126847352639870278, guid: 4c70f912eaa516b4f94a1b43ffc2947a, type: 3}
   entityName: Moo Juice
   interactionType: 0
   interactionRange: 5
   interactionUI: {fileID: 296245763187668813}
+  _cutscene: {fileID: 0}
   currentlyInteracting: 0
 --- !u!114 &296245762694379202
 MonoBehaviour:

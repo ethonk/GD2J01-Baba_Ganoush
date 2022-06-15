@@ -13,6 +13,7 @@
 //
 
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,7 +22,12 @@ namespace Managers.EventManagement
     public class EventManagement : MonoBehaviour
     {
         // Global variables
+        //
+        // Currency
         private int _coinCount = 0;
+        // Player status
+        public float debuffTime = 3.0f;
+        private bool _isDebuffed = false;
 
         // To start dialogue.
         [System.Serializable]
@@ -55,6 +61,17 @@ namespace Managers.EventManagement
             
             // if none, invoke.
             onDialogueFinish.Invoke();
+        }
+
+        [System.Serializable]
+        public class DebuffExpelEvent : UnityEvent{}
+        public DebuffExpelEvent onDebuffExpel;
+        // DEBUFF COROUTINE
+        private IEnumerator StopAllDebuffs()
+        {
+            yield return new WaitForSeconds(debuffTime);
+            _isDebuffed = false;
+            onDebuffExpel.Invoke();
         }
     }
 }

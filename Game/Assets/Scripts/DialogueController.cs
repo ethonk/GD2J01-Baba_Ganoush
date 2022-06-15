@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using Managers.EventManagement;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class DialogueController : MonoBehaviour
 {
+    [Header("Core - Input")]
+    [SerializeField] private InputActionReference inputLeftClick;
+    
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI dialogueNameComponent;
     [SerializeField] private TextMeshProUGUI dialogueTextComponent;
