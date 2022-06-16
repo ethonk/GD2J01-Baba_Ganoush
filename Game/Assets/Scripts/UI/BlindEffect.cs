@@ -8,7 +8,6 @@ public class BlindEffect : MonoBehaviour
     
     public void EnableBlind()
     {
-        print("blinding...");
         blindUI.SetActive(true);
     }
 

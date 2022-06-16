@@ -67,7 +67,13 @@ namespace Managers.EventManagement
         [System.Serializable]
         public class DebuffApplyEvent : UnityEvent{}
         public DebuffApplyEvent onDebuffApply;
-
+        [System.Serializable]
+        public class DebuffSpeedApplyEvent : UnityEvent{}
+        public DebuffSpeedApplyEvent onDebuffSpeedApply;
+        public void SpeedDebuffApplied()
+        {
+            onDebuffSpeedApply.Invoke();
+        }
         // disable event
         [System.Serializable]
         public class DebuffExpelEvent : UnityEvent{}
