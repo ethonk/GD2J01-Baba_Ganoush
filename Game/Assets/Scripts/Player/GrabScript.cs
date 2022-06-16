@@ -20,7 +20,7 @@ public class GrabScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && grabObject != null && canGrab)
+        if (inputGrab.action.triggered && grabObject != null && canGrab)
         {
             grabObject.transform.parent = this.transform;
             grabObject.transform.position = this.transform.GetChild(0).position;
@@ -28,7 +28,7 @@ public class GrabScript : MonoBehaviour
             Physics.IgnoreCollision(this.transform.parent.GetComponent<Collider>(), grabObject.GetComponent<Collider>());
             canGrab = false;
         }
-        else if (Input.GetKeyDown(KeyCode.G) && grabObject != null)
+        else if (inputGrab.action.triggered && grabObject != null)
         {
             grabObject.transform.parent = null;
             Physics.IgnoreCollision(this.transform.parent.GetComponent<Collider>(), grabObject.GetComponent<Collider>(), false);
@@ -36,7 +36,7 @@ public class GrabScript : MonoBehaviour
             canGrab = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && !canGrab)
+        if (inputThrow.action.triggered && !canGrab)
         {
             grabObject.transform.parent = null;
             Physics.IgnoreCollision(this.transform.parent.GetComponent<Collider>(), grabObject.GetComponent<Collider>(), false);
