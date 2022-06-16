@@ -36,7 +36,7 @@ public class GrabScript : MonoBehaviour
             canGrab = true;
         }
 
-        if (inputThrow.action.triggered && !canGrab)
+        if (inputDrop.action.triggered && !canGrab)
         {
             grabObject.transform.parent = null;
             Physics.IgnoreCollision(this.transform.parent.GetComponent<Collider>(), grabObject.GetComponent<Collider>(), false);
