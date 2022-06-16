@@ -73,5 +73,15 @@ namespace Managers.EventManagement
             _isDebuffed = false;
             onDebuffExpel.Invoke();
         }
+
+        [System.Serializable]
+        public class FadingObj : UnityEvent { }
+        public FadingObj onObjFade;
+        public void Fading()
+        {
+            Fading fading = GetComponent<Fading>();
+            //fading.Invoke("startFading");
+
+        }
     }
 }
