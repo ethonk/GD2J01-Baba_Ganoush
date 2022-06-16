@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Drawable
   - Grabbable
+  - Coin
   layers:
   - Default
   - TransparentFX
