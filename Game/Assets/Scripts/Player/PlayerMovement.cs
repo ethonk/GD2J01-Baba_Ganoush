@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Player Settings")]
     [SerializeField] float playerSpeed = 2.0f;
+
+    [SerializeField] private float defaultPlayerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private float rotationSpeed = 4.0f;
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     {
         inputMovement.action.Enable();
         inputJump.action.Enable();
+
+        playerSpeed = defaultPlayerSpeed;
     }
 
     private void OnDisable()
@@ -78,5 +82,15 @@ public class PlayerMovement : MonoBehaviour
             Quaternion rot = Quaternion.Euler(0f, desiredAngle, 0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
         }
+    }
+
+    public void ApplyDebuffSpeed()
+    {
+        playerSpeed = defaultPlayerSpeed / 2;
+    }
+
+    public void ExpelDebuffSpeed()
+    {
+        playerSpeed = defaultPlayerSpeed;
     }
 }

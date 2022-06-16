@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputMovement: {fileID: 6442087403596925254, guid: 4c70f912eaa516b4f94a1b43ffc2947a, type: 3}
   inputJump: {fileID: -9068323928118017117, guid: 4c70f912eaa516b4f94a1b43ffc2947a, type: 3}
-  playerSpeed: 2
+  playerSpeed: 15
   jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 4

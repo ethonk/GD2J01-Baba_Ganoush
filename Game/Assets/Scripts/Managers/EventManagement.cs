@@ -27,7 +27,7 @@ namespace Managers.EventManagement
         private int _coinCount = 0;
         // Player status
         public float debuffTime = 3.0f;
-        private bool _isDebuffed = false;
+        public bool isDebuffed = false;
 
         // To start dialogue.
         [System.Serializable]
@@ -62,16 +62,34 @@ namespace Managers.EventManagement
             // if none, invoke.
             onDialogueFinish.Invoke();
         }
+        
+        // enable event
+        [System.Serializable]
+        public class DebuffApplyEvent : UnityEvent{}
+        public DebuffApplyEvent onDebuffApply;
 
+        // disable event
         [System.Serializable]
         public class DebuffExpelEvent : UnityEvent{}
         public DebuffExpelEvent onDebuffExpel;
+        public void StartDebuff()
+        {
+            isDebuffed = true;
+            StartCoroutine(StopAllDebuffs());
+        }
+
+        public void ApplyDebuffVision()
+        {
+            onDebuffApply.Invoke();
+        }
         // DEBUFF COROUTINE
         private IEnumerator StopAllDebuffs()
         {
             yield return new WaitForSeconds(debuffTime);
-            _isDebuffed = false;
+            isDebuffed = false;
             onDebuffExpel.Invoke();
+            
+            print("run it back!");
         }
     }
 }
