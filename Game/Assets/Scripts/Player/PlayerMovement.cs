@@ -7,15 +7,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputActionReference inputJump;
     
     [Header("Player Settings")]
-    [SerializeField] float playerSpeed = 2.0f;
+    [SerializeField] public float playerSpeed = 2.0f;
 
-    [SerializeField] private float defaultPlayerSpeed = 2.0f;
+    [SerializeField] public float defaultPlayerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private float rotationSpeed = 4.0f;
     
     private CharacterController controller;
-    private Vector3 playerVelocity;
+    public Vector3 playerVelocity;
     private bool groundedPlayer;
     private Transform mainCam;
 
