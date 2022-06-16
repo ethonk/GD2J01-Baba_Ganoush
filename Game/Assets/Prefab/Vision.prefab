@@ -108,9 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483dd7ed0f72197418511b2c0365d989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventManagement: {fileID: 0}
   projectileSpeed: 0
   projectileLifetime: 0
   projectileTarget: {x: 0, y: 0, z: 0}
   exists: 0
-  projectileType: 1
+  projectileType: 0
   particleEffect: {fileID: 5859193109831284731, guid: 94f94bfde18b7a746b2a29090a638c63, type: 3}

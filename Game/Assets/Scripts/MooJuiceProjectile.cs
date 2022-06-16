@@ -63,7 +63,7 @@ public class MooJuiceProjectile : MonoBehaviour
             {
                 // start debuff end timer
                 eventManagement.StartDebuff();
-                
+
                 // apply correct debuff
                 switch (projectileType)
                 {
@@ -71,6 +71,7 @@ public class MooJuiceProjectile : MonoBehaviour
                         eventManagement.ApplyDebuffVision();
                         break;
                     case GlobalEnums.ProjectileTypes.Slow:
+                        eventManagement.SpeedDebuffApplied();   // invoke event for speed.
                         col.GetComponent<PlayerMovement>().ApplyDebuffSpeed();
                         break;
                 }
@@ -80,7 +81,7 @@ public class MooJuiceProjectile : MonoBehaviour
             var newParticle = Instantiate(particleEffect);
             newParticle.transform.SetParent(null);
             newParticle.transform.position = transform.position;
-            
+
             // destroy projectile
             Destroy(gameObject);
         }
