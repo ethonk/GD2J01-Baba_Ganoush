@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Managers.EventManagement;
 using UnityEngine;
 
 public class MooJuiceProjectile : MonoBehaviour
 {
+    [Header("References")] [SerializeField]
+    private EventManagement eventManagement;
+
     [Header("Settings - Given by Pissed Moo Juice Script")]
     public float projectileSpeed;       // how fast is the projectile going?
     public float projectileLifetime;    // how long does the projectile exist?
@@ -19,7 +23,11 @@ public class MooJuiceProjectile : MonoBehaviour
     [SerializeField] private GameObject particleEffect;
 
     private Vector3 normalizedDirection;
-    
+
+    private void Start()
+    {
+        eventManagement = GameObject.Find("EVENT_MANAGER").GetComponent<EventManagement>();
+    }
     private void Update()
     {
         if (exists)
@@ -50,9 +58,30 @@ public class MooJuiceProjectile : MonoBehaviour
     {
         if (col.transform.CompareTag("Player"))
         {
+            // if not already debuffed, apply debuff...
+            if (!eventManagement.isDebuffed)
+            {
+                // start debuff end timer
+                eventManagement.StartDebuff();
+                
+                // apply correct debuff
+                switch (projectileType)
+                {
+                    case GlobalEnums.ProjectileTypes.Blind:
+                        eventManagement.ApplyDebuffVision();
+                        break;
+                    case GlobalEnums.ProjectileTypes.Slow:
+                        col.GetComponent<PlayerMovement>().ApplyDebuffSpeed();
+                        break;
+                }
+            }
+            
+            // set particle explosion effect
             var newParticle = Instantiate(particleEffect);
             newParticle.transform.SetParent(null);
             newParticle.transform.position = transform.position;
+            
+            // destroy projectile
             Destroy(gameObject);
         }
     }
