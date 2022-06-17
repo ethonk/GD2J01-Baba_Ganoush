@@ -1661,6 +1661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98687741dd246a41a17f3f320a0ed82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputLeftClick: {fileID: 0}
   dialogueNameComponent: {fileID: 1421498209}
   dialogueTextComponent: {fileID: 1321842460}
   talkSpeed: 0.03
@@ -1821,12 +1822,24 @@ PrefabInstance:
       value: -7.9999986
       objectReference: {fileID: 0}
     - target: {fileID: 1667299563943328222, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667299563943328222, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.0055007935
       objectReference: {fileID: 0}
     - target: {fileID: 1667299563943328222, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6977
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667299563943328222, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.11344998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667299563943328222, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6981799
       objectReference: {fileID: 0}
     - target: {fileID: 1667299563943328222, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2094,6 +2107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bdadc9dc87a0ed4eb8dc15f64a92ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debuffTime: 3
+  isDebuffed: 0
   onStartDialogue:
     m_PersistentCalls:
       m_Calls:
@@ -2137,6 +2152,15 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onDialogueFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  onDebuffApply:
+    m_PersistentCalls:
+      m_Calls: []
+  onDebuffSpeedApply:
+    m_PersistentCalls:
+      m_Calls: []
+  onDebuffExpel:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1317278530
@@ -2314,8 +2338,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329207035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.31, y: -20.81, z: 21.77}
-  m_LocalScale: {x: 8.70369, y: 2.2449412, z: 8.576654}
+  m_LocalPosition: {x: 4.31, y: -20.76, z: 21.77}
+  m_LocalScale: {x: 8.70369, y: 1.8639971, z: 8.576654}
   m_Children: []
   m_Father: {fileID: 1561407122}
   m_RootOrder: 0
@@ -3744,6 +3768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2511ffc7656f67d4b8971beef1004657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputGrab: {fileID: 0}
+  inputDrop: {fileID: 0}
   throwForce: 200
   throwHeight: 250
 --- !u!65 &1759565248
