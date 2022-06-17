@@ -14,14 +14,21 @@ public class GrabScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        inputGrab.action.Enable();
+        inputDrop.action.Enable();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(inputGrab.action.triggered)
+        {
+            Debug.Log("Test2");
+        }
         if (inputGrab.action.triggered && grabObject != null && canGrab)
         {
+            Debug.Log("Test");
             grabObject.transform.parent = this.transform;
             grabObject.transform.position = this.transform.GetChild(0).position;
             grabObject.GetComponent<Rigidbody>().isKinematic = true;

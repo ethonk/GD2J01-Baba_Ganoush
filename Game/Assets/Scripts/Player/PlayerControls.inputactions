@@ -155,7 +155,7 @@
                     "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "",
                     "action": "Grabbing",
                     "isComposite": false,
                     "isPartOfComposite": false
