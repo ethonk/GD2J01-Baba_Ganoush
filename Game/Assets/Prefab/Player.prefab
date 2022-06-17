@@ -60,8 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputGrab: {fileID: 4118251670554365537, guid: 4c70f912eaa516b4f94a1b43ffc2947a, type: 3}
   inputDrop: {fileID: 844958001249766811, guid: 4c70f912eaa516b4f94a1b43ffc2947a, type: 3}
-  throwForce: 100
-  throwHeight: 100
+  throwForce: 200
+  throwHeight: 250
 --- !u!1 &1009802892
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667299564189080338}
   m_LocalRotation: {x: 0.17842482, y: -0.00000333786, z: 0.000000603497, w: 0.9839536}
-  m_LocalPosition: {x: -0.0000009520348, y: 0, z: -0.000002384841}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1667299563532869584}
@@ -922,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667299564817581995}
   m_LocalRotation: {x: 0.16049767, y: -0.0000033080573, z: 0.0000005438923, w: 0.9870362}
-  m_LocalPosition: {x: -0.0000009526905, y: 0, z: -0.000001431167}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1667299564256781299}
@@ -1136,7 +1136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667299564939931203}
   m_LocalRotation: {x: 0.14256497, y: -0.000003367662, z: 0.0000004842877, w: 0.98978543}
-  m_LocalPosition: {x: -0.0000009526905, y: 0, z: -0.000001431167}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1667299564810613181}
