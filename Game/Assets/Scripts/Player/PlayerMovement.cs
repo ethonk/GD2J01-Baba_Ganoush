@@ -15,7 +15,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 4.0f;
     
     private CharacterController controller;
+    
     public Vector3 playerVelocity;
+    public Vector3 lastPosition;
+    
     private bool groundedPlayer;
     private Transform mainCam;
 
@@ -50,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
+
+        lastPosition = transform.position;
         
         // get movement input
         Vector2 movement = inputMovement.action.ReadValue<Vector2>();

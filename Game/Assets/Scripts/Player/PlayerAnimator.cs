@@ -16,7 +16,7 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         bool isWalking = false;
-        if (plrMovement.playerVelocity == Vector3.zero)
+        if (plrMovement.lastPosition == plrMovement.transform.position)
             isWalking = false;
         else
             isWalking = true;
