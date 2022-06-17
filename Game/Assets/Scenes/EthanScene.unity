@@ -9256,7 +9256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plrMovement: {fileID: 529825240}
-  plrAnimator: {fileID: 0}
+  plrAnimator: {fileID: 1990738964}
 --- !u!95 &1990738964
 Animator:
   serializedVersion: 3
@@ -9267,7 +9267,7 @@ Animator:
   m_GameObject: {fileID: 1990738961}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4995713d89c8c8642bedbbd793f94ab0, type: 3}
-  m_Controller: {fileID: 9100000, guid: db90dc2646f8789459809e00c6711e3b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3995101e6bd56b441beef1edcfbf1f4f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9979,6 +9979,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 206169262, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1200712205168050195, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.886
@@ -10229,6 +10233,14 @@ PrefabInstance:
       propertyPath: countProjectile
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6223606366700671322, guid: 2c6007c5f7fcf5d44ab755f3ecce4ea4, type: 3}
+      propertyPath: projectiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 5749130999402925784, guid: 53010e0c5366f6c4c8413519489ce20a, type: 3}
+    - target: {fileID: 6223606366700671322, guid: 2c6007c5f7fcf5d44ab755f3ecce4ea4, type: 3}
+      propertyPath: projectiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 6187378064512795954, guid: 92d7157e7ab41a745991cdfde36decd9, type: 3}
     - target: {fileID: 6223606366700671323, guid: 2c6007c5f7fcf5d44ab755f3ecce4ea4, type: 3}
       propertyPath: m_Name
       value: MooJuice_BOSS
