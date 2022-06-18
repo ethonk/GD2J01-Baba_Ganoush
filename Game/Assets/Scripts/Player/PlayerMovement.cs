@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float defaultPlayerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
-    [SerializeField] private float rotationSpeed = 4.0f;
-    
+    [SerializeField] private float rotationSpeed = 0.2f;
+
     private CharacterController controller;
     
     public Vector3 playerVelocity;
@@ -53,7 +54,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
-
+        
+        // get last position (used to determine if idle).
         lastPosition = transform.position;
         
         // get movement input
@@ -65,11 +67,6 @@ public class PlayerMovement : MonoBehaviour
         move.y = 0.0f;
         // move the controller
         controller.Move(move * (Time.deltaTime * playerSpeed));
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
 
         // Changes the height position of the player..
         if (inputJump.action.triggered && groundedPlayer)
