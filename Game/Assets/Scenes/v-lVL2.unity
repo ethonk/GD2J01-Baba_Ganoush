@@ -1154,6 +1154,10 @@ PrefabInstance:
       value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 1667299564839462584, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
+      propertyPath: rotationSpeed
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667299564839462584, guid: 92fe632598d4b484c893c7c45b6e7546, type: 3}
       propertyPath: defaultPlayerSpeed
       value: 8
       objectReference: {fileID: 0}
