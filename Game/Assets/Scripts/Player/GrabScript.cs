@@ -22,10 +22,6 @@ public class GrabScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(inputGrab.action.triggered)
-        {
-            Debug.Log("Test2");
-        }
         if (inputGrab.action.triggered && grabObject != null && canGrab)
         {
             Debug.Log("Test");
@@ -49,7 +45,8 @@ public class GrabScript : MonoBehaviour
             Physics.IgnoreCollision(this.transform.parent.GetComponent<Collider>(), grabObject.GetComponent<Collider>(), false);
             grabObject.GetComponent<Rigidbody>().isKinematic = false;
             canGrab = true;
-            grabObject.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * throwForce + this.transform.up*throwHeight);
+            Vector3 rot = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized;
+            grabObject.GetComponent<Rigidbody>().AddForce(rot * throwForce + this.transform.up*throwHeight);
         }
     }
 
