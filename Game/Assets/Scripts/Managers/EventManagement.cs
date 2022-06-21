@@ -24,7 +24,7 @@ namespace Managers.EventManagement
         // Global variables
         //
         // Currency
-        private int _coinCount = 0;
+        public int _coinCount = 0;
         // Player status
         public float debuffTime = 3.0f;
         public bool isDebuffed = false;

@@ -28,6 +28,7 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] private CutsceneCreator _cutscene;
 
     private Transform _player;
+    private Transform _playerCam;
     public bool currentlyInteracting = false;
     
     private void Start()
@@ -37,6 +38,7 @@ public class InteractionManager : MonoBehaviour
         
         // Setup the player
         _player = GameObject.Find("Player").transform;
+        _playerCam = GameObject.Find("Player").transform.Find("PlayerCamera").transform;
 
         // Set up what the text says.
         var text = interactionUI.transform.Find("Text").GetComponent<TextMeshProUGUI>();
@@ -102,7 +104,7 @@ public class InteractionManager : MonoBehaviour
 
     void RotateUIToPlayer()
     {
-        var lookDirection = _player.position - interactionUI.transform.position;
+        var lookDirection = _playerCam.position - interactionUI.transform.position;
         lookDirection.x *= -1;
         lookDirection.y = 0;
         lookDirection.z *= -1;
