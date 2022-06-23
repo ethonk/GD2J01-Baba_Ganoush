@@ -10,6 +10,9 @@ public class PressurePlateScript : MonoBehaviour
     public List<PressurePlateInteractableBaseScript> interactables;
     public float startDelay;
     public float endDelay;
+
+    public bool InvisObj = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,8 @@ public class PressurePlateScript : MonoBehaviour
         }
             onPlateCount += 1;
         direction = 1;
+        InvisObj = false;
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -48,6 +53,8 @@ public class PressurePlateScript : MonoBehaviour
             direction = -1;
             timer = endDelay;
         }
+        InvisObj = true;
+
     }
 
 
