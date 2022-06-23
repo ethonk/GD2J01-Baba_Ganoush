@@ -10,6 +10,9 @@ public class ButtonScript : MonoBehaviour
     public List<PressurePlateInteractableBaseScript> interactables;
     public float startDelay;
     public float cooldown;
+
+    public bool InvisObj = false;
+
     // Start is called before the first frame update
     void Start()
     {
