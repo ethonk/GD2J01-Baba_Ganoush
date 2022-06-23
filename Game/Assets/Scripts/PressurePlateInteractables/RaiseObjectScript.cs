@@ -22,4 +22,27 @@ public class RaiseObjectScript : PressurePlateInteractableBaseScript
         this.transform.position = Vector3.Lerp(startPos, startPos + movementOffset, timer / moveTime);
         this.transform.eulerAngles = Vector3.Lerp(startRot, startRot + rotationOffset, timer / moveTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Grabbable")
+        {
+            if(!other.gameObject.GetComponent<Rigidbody>().isKinematic)
+            {
+                other.gameObject.transform.parent = this.gameObject.transform;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Grabbable")
+        {
+            if(!other.gameObject.GetComponent<Rigidbody>().isKinematic)
+            {
+                other.gameObject.transform.parent = this.gameObject.transform.parent;
+                Debug.Log("Exit");
+            }
+        }
+    }
 }

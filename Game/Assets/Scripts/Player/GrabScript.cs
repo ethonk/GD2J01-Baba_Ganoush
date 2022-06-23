@@ -28,6 +28,7 @@ public class GrabScript : MonoBehaviour
             grabObject.transform.parent = this.transform;
             grabObject.transform.position = this.transform.GetChild(0).position;
             grabObject.GetComponent<Rigidbody>().isKinematic = true;
+            grabObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             Physics.IgnoreCollision(this.transform.parent.GetComponent<Collider>(), grabObject.GetComponent<Collider>());
             canGrab = false;
         }
