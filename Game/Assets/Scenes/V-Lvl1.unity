@@ -1554,6 +1554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bdadc9dc87a0ed4eb8dc15f64a92ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coinCount: 0
   debuffTime: 3
   isDebuffed: 0
   onStartDialogue:
@@ -4188,7 +4189,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 824ca97207ed00e4ebec198d638783af, type: 2}
+  - {fileID: 2100000, guid: a35acb02ea1e73e4388c1d2bdd913041, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
