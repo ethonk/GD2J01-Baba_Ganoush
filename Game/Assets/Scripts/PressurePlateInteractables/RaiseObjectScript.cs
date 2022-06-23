@@ -23,26 +23,49 @@ public class RaiseObjectScript : PressurePlateInteractableBaseScript
         this.transform.eulerAngles = Vector3.Lerp(startRot, startRot + rotationOffset, timer / moveTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.tag == "Grabbable")
+        if(collision.collider.gameObject.tag == "Grabbable")
         {
-            if(!other.gameObject.GetComponent<Rigidbody>().isKinematic)
+            if (!collision.collider.gameObject.GetComponent<Rigidbody>().isKinematic)
             {
-                other.gameObject.transform.parent = this.gameObject.transform;
+                collision.collider.gameObject.transform.parent = this.gameObject.transform;
+            }
+        }
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.gameObject.tag == "Grabbable")
+        {
+            if (!collision.collider.gameObject.GetComponent<Rigidbody>().isKinematic)
+            {
+                collision.collider.gameObject.transform.parent = this.gameObject.transform.parent;
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Grabbable")
-        {
-            if(!other.gameObject.GetComponent<Rigidbody>().isKinematic)
-            {
-                other.gameObject.transform.parent = this.gameObject.transform.parent;
-                Debug.Log("Exit");
-            }
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.gameObject.tag == "Grabbable")
+    //    {
+    //        if(!other.gameObject.GetComponent<Rigidbody>().isKinematic)
+    //        {
+    //            other.gameObject.transform.parent = this.gameObject.transform;
+    //        }
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Grabbable")
+    //    {
+    //        if(!other.gameObject.GetComponent<Rigidbody>().isKinematic)
+    //        {
+    //            other.gameObject.transform.parent = this.gameObject.transform.parent;
+    //            Debug.Log("Exit");
+    //        }
+    //    }
+    //}
 }
