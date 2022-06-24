@@ -54,7 +54,7 @@ public class InteractionManager : MonoBehaviour
                 text.text = "Power surrounds ";
                 break;
             case InteractionTypes.Cutscene:
-                text.text = "Have a one-to-one with ";
+                text.text = "Speak to ";
                 break;
         }
         text.text += entityName;
