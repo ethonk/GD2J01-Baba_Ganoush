@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Managers.EventManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MooJuiceProjectile : MonoBehaviour
 {
@@ -58,8 +59,14 @@ public class MooJuiceProjectile : MonoBehaviour
     {
         if (col.transform.CompareTag("Player"))
         {
+            // if it kills, restart scene
+            if (projectileType == GlobalEnums.ProjectileTypes.Kill)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            
             // if not already debuffed, apply debuff...
-            if (!eventManagement.isDebuffed)
+            else if (!eventManagement.isDebuffed)
             {
                 // start debuff end timer
                 eventManagement.StartDebuff();
@@ -77,6 +84,16 @@ public class MooJuiceProjectile : MonoBehaviour
                 }
             }
             
+            // set particle explosion effect
+            var newParticle = Instantiate(particleEffect);
+            newParticle.transform.SetParent(null);
+            newParticle.transform.position = transform.position;
+
+            // destroy projectile
+            Destroy(gameObject);
+        }
+        else if (col.transform.CompareTag("InvisibleWall") || col.transform.CompareTag("Floor"))
+        {
             // set particle explosion effect
             var newParticle = Instantiate(particleEffect);
             newParticle.transform.SetParent(null);

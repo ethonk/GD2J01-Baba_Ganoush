@@ -27,7 +27,8 @@ public class PissedMooJuice : MonoBehaviour
     [Header("Settings - Boss Exclusive")] 
     [SerializeField] private float multiSpawnDelay;         // Wait how long between each projectile generation.
     [SerializeField] private float multiSpawnFireDelay;     // After projectile generation, how long before launching?
-    
+    public List<DialogueTextClass> bossDialogue = new List<DialogueTextClass>();
+
     [Header("Range that the player has to be to interact with Moo Juice")]
     public float range;
     public bool inRange;
@@ -46,7 +47,11 @@ public class PissedMooJuice : MonoBehaviour
     {
         // Play text
         string _name = "Moo Juice";
-        string[] _text = {"Hey! Don't ignore me!"};
+        
+        // choose a random dialogue text
+        int randIndex = Random.Range(0, bossDialogue.Count);
+        string[] _text = bossDialogue[randIndex].Dialogues;
+
         GameObject.Find("EVENT_MANAGER").GetComponent<EventManagement>()
             .SetDialogueSentences(_name, _text);
         
