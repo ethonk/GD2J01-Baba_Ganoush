@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class GlobalEnums : MonoBehaviour
 {
-    public enum ProjectileTypes {Blind, Slow};
+    public enum ProjectileTypes {Blind, Slow, Kill};
 }
