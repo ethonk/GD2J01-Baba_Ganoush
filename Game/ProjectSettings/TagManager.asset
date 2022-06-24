@@ -7,6 +7,8 @@ TagManager:
   - Drawable
   - Grabbable
   - Coin
+  - Floor
+  - InvisibleWall
   layers:
   - Default
   - TransparentFX

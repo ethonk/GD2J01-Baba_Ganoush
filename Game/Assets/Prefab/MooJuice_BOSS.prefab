@@ -113,15 +113,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moojuiceMode: 1
   projectiles:
-  - {fileID: 6187378064512795954, guid: 92d7157e7ab41a745991cdfde36decd9, type: 3}
   - {fileID: 5749130999402925784, guid: 53010e0c5366f6c4c8413519489ce20a, type: 3}
+  - {fileID: 6187378064512795954, guid: 92d7157e7ab41a745991cdfde36decd9, type: 3}
+  - {fileID: 5749130999402925784, guid: 0388a3e93d0f83b4c90f93a597038c2e, type: 3}
   countProjectile: 10
-  cdProjectile: 0.5
-  spdProjectile: 50
+  cdProjectile: 2
+  spdProjectile: 30
   lifetimeProjectile: 10
   singleSpawnDelay: 0.5
   multiSpawnDelay: 0.02
   multiSpawnFireDelay: 0.2
+  bossDialogue:
+  - Dialogues:
+    - WE USED TO BE FRIENDS!
+  - Dialogues:
+    - THE PROBLEM WITH US IS YOU!
+  - Dialogues:
+    - WE HAD A GOOD THING GOING AND YOU RUINED IT!
+  - Dialogues:
+    - I WAS ONLY TRYING TO HELP!
   range: 35
   inRange: 0
 --- !u!95 &6223606366700671265
@@ -213,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 7483894711331120201, guid: e2252569f4f622a4693e2b0fbb51d8c7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 087d2c2f04f5dd5419c8f400c423cfce, type: 2}
+      objectReference: {fileID: 2100000, guid: 7137ea68f8628ce4bbb04f8291e92a4e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2252569f4f622a4693e2b0fbb51d8c7, type: 3}
 --- !u!4 &5896347129511772154 stripped

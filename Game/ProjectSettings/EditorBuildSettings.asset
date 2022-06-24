@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BW-Lvl5.unity
     guid: 3143f8c5a5de6224d9bf7b1b376bfc97
   - enabled: 1
+    path: Assets/Scenes/E-Lvl6.unity
+    guid: 8a113faf7f800ed41a558d4af55d2cc6
+  - enabled: 1
     path: Assets/Scenes/EndingScene.unity
     guid: 8564df9041ce7734d93265c0be70e177
   m_configObjects: {}
