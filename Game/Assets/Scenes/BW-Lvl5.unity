@@ -16048,7 +16048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e2252569f4f622a4693e2b0fbb51d8c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22
+      value: -13.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e2252569f4f622a4693e2b0fbb51d8c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16085,6 +16085,10 @@ PrefabInstance:
     - target: {fileID: -3206598734262923836, guid: e2252569f4f622a4693e2b0fbb51d8c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: -3206598734262923836, guid: e2252569f4f622a4693e2b0fbb51d8c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.556
       objectReference: {fileID: 0}
     - target: {fileID: -3206598734262923836, guid: e2252569f4f622a4693e2b0fbb51d8c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16790,7 +16794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   focusObject: {fileID: 1962616462}
-  flipped: 1
+  flipped: 0
 --- !u!1 &1795451379
 GameObject:
   m_ObjectHideFlags: 0
