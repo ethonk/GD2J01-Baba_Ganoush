@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Managers.EventManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class DialogueTextClass
@@ -85,5 +86,8 @@ public class CutsceneCreator : MonoBehaviour
         
         // Reset index.
         cutsceneIndex = 0;
+        
+        // Next scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -8,6 +8,8 @@ public class ParticlePlayer : MonoBehaviour
 
     private void Start()
     {
+        if (GetComponent<ParticleSystem>() == null) return; 
+        
         particle = GetComponent<ParticleSystem>();
         particle.Stop();
     }

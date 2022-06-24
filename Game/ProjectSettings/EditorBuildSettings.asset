@@ -6,19 +6,28 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/V-Lvl1.unity
+    path: Assets/Scenes/MainLevels/V-Lvl1.unity
     guid: c25ab27d7e402a74595852d75384c133
   - enabled: 1
-    path: Assets/Scenes/v-lVL2.unity
+    path: Assets/Scenes/Cutscene Levels/Lv2_cs.unity
+    guid: d51afb02678186e4f9207628be70991d
+  - enabled: 1
+    path: Assets/Scenes/MainLevels/v-lVL2.unity
     guid: 650f47b0e269cc0489245177d1b4f682
   - enabled: 1
-    path: Assets/Scenes/V-Lvl3.unity
+    path: Assets/Scenes/Cutscene Levels/Lv3_cs.unity
+    guid: 37c631ed36d7a3840bdfd4f9008e4cfe
+  - enabled: 1
+    path: Assets/Scenes/MainLevels/V-Lvl3.unity
     guid: 0ade5015eba35ef49a34d30822cb9df5
   - enabled: 1
-    path: Assets/Scenes/V-Lvl4.unity
+    path: Assets/Scenes/Cutscene Levels/Lv4_cs.unity
+    guid: ea8035d733936e4409fd8ad79017a934
+  - enabled: 1
+    path: Assets/Scenes/MainLevels/V-Lvl4.unity
     guid: b30425fd8077b044cba13c87aae98f65
   - enabled: 1
-    path: Assets/Scenes/BW-Lvl5.unity
+    path: Assets/Scenes/MainLevels/BW-Lvl5.unity
     guid: 3143f8c5a5de6224d9bf7b1b376bfc97
   - enabled: 1
     path: Assets/Scenes/E-Lvl6.unity
