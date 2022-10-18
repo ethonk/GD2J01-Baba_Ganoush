@@ -5,6 +5,7 @@ using Managers.EventManagement;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class DialogueController : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class DialogueController : MonoBehaviour
                 NextSentence();
             }
         }
+        
+        if (Input.GetKeyDown(KeyCode.M))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void StartDialogue(string givenName, string[] givenSentences)
